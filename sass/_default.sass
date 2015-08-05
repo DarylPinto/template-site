@@ -1,0 +1,42 @@
+//Reset
+
+*
+	margin: 0
+	padding: 0
+
+.clearfix
+	clear: both
+
+//Mixins
+
+=border-radius($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius: $radius
+	-ms-border-radius: $radius
+	-o-border-radius: $radius
+	border-radius: $radius
+
+=box-shadow($size)
+	-webkit-box-shadow: $size
+	-moz-box-shadow: $size
+	-ms-box-shadow: $size
+	-o-box-shadow: $size
+	box-shadow: $size
+
+=transition($time)
+	-webkit-transition: $time
+	-moz-transition: $time
+	-ms-transition: $time
+	-o-transition: $time
+	transition: $time
+
+=display-flex
+	display: -webkit-flex
+	display: flex
+
+=flex($num)
+	-webkit-flex: $num
+	-moz-flex: $num
+	-ms-flex: $num
+	-o-flex: $num
+	flex: $num
