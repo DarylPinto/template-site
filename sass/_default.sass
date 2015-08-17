@@ -4,39 +4,24 @@
 	margin: 0
 	padding: 0
 
+//Utilities
+
 .clearfix
 	clear: both
 
 //Mixins
 
-=border-radius($radius)
-	-webkit-border-radius: $radius
-	-moz-border-radius: $radius
-	-ms-border-radius: $radius
-	-o-border-radius: $radius
-	border-radius: $radius
+=grayscale
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale")
+	-webkit-filter: grayscale(100%)
+	-moz-filter: grayscale(100%)
+	-ms-filter: grayscale(100%)
+	-o-filter: grayscale(100%)
+	filter: grayscale(100%)
 
-=box-shadow($size)
-	-webkit-box-shadow: $size
-	-moz-box-shadow: $size
-	-ms-box-shadow: $size
-	-o-box-shadow: $size
-	box-shadow: $size
-
-=transition($time)
-	-webkit-transition: $time
-	-moz-transition: $time
-	-ms-transition: $time
-	-o-transition: $time
-	transition: $time
-
-=display-flex
-	display: -webkit-flex
-	display: flex
-
-=flex($num)
-	-webkit-flex: $num
-	-moz-flex: $num
-	-ms-flex: $num
-	-o-flex: $num
-	flex: $num
+=vendor($name, $argument)
+	-webkit-#{$name}: #{$argument}
+	-moz-#{$name}: #{$argument}
+	-ms-#{$name}: #{$argument}
+	-o-#{$name}: #{$argument}
+	#{$name}: #{$argument}
