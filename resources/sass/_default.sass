@@ -31,6 +31,13 @@ li
 	-o-#{$name}: #{$argument}
 	#{$name}: #{$argument}
 
+=vendor($name, $argument)
+	-webkit-#{$name}: #{$argument}
+	-moz-#{$name}: #{$argument}
+	-ms-#{$name}: #{$argument}
+	-o-#{$name}: #{$argument}
+	#{$name}: #{$argument}
+
 =background-gradient($color1, $color2)
 	background: #{$color1}
 	background: -moz-linear-gradient(top,  #{$color1} 0%, #{$color2} 100%)
