@@ -3,7 +3,7 @@ $(document).ready(function() {
 });
 
 //When the window is Resized
-$( window ).resize(function() {
+$(window).resize(function() {
 });
 
 //When the page scrolls
