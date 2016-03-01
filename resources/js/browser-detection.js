@@ -1,6 +1,7 @@
 var $UA = new Object();
 
 //Browser Property
+//stackoverflow.com/q/5916900
 $UA.browser = (function(){
     var $UA= navigator.userAgent, tem,
     M= $UA.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
@@ -18,6 +19,7 @@ $UA.browser = (function(){
 })();
 
 //OS Property
+//javascripter.net/faq/operatin.htm
 if (navigator.appVersion.indexOf("Win")!=-1) $UA.OS = "Windows";
 if (navigator.appVersion.indexOf("Mac")!=-1) $UA.OS = "MacOS";
 if (navigator.appVersion.indexOf("X11")!=-1) $UA.OS = "UNIX";
