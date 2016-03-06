@@ -26,12 +26,14 @@
 
 	<link rel="stylesheet" type="text/css" href="resources/css/main.css">
 	<link rel="shortcut icon" type="image/ico" href="resources/images/favicon.ico" />
-	
-	<!-- jQuery :: jquery.com-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<!-- Flexibility (Partial Flexbox support for IE 8 & 9) :: github.com/10up/flexibility-->
-	<script type="text/javascript" src="resources/js/min/flexibility.min.js"></script>
+	<!--[if lte IE 9]>
+		<script type="text/javascript" src="resources/js/min/flexibility.min.js"></script>
+	<!--<![endif]-->
+		
+	<!-- jQuery :: jquery.com-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<!-- HTML5 Shiv :: github.com/aFarkas/html5shiv-->
 	<script type="text/javascript" src="resources/js/min/html5shiv.min.js"></script>
