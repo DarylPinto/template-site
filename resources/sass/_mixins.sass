@@ -21,6 +21,15 @@
 	-o-filter: grayscale(100%)
 	filter: grayscale(100%)
 
+//Proper drop-shadow for images with alpha transparency
+//Do not include units in the arguments (use 10, not 10px)
+//stackoverflow.com/q/3186688
+=alpha-shadow($x-offset, $y-offset, $blur, $color)
+	-webkit-filter: drop-shadow(#{$x-offset}px #{$y-offset}px #{$blur}px #{$color})
+	filter: url(#drop-shadow)
+	-ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$x-offset}, OffY=#{$y-offset}, Color='#{$color}')"
+	filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=#{$x-offset}, OffY=#{$y-offset}, Color='#{$color}')"
+
 //Include all vendor prefixes
 =vendor($name, $argument)
 	-webkit-#{$name}: #{$argument}
