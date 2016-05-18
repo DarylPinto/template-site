@@ -5,15 +5,16 @@ module.exports = function(grunt){
 
 		sass: {
 			options: {
-				sourceMap: true
+				sourcemap: 'auto',
+				style: 'nested'
 			},
 			dist: {
 				files: [
 					{
 						expand: true,
-						cwd: 'resources/',
-						src: ['sass/*.sass', 'scss/*.scss'],
-						dest: 'resources/css/',
+						cwd: 'src/css',
+						src: ['*.sass', '*.scss'],
+						dest: 'dist/css/',
 						flatten: true,
 						ext: '.css'
 					}
@@ -29,9 +30,22 @@ module.exports = function(grunt){
 				files: [
 					{
 						expand: true,
-						cwd: 'resources/js/src/',
+						cwd: 'src/js/',
 						src: ['*.js'],
-						dest: 'resources/js/babel-transpiled/'
+						dest: 'dist/js/babel-transpiled/'
+					}
+				]
+			}
+		},
+
+		imagemin: {
+			dynamic: {
+				files: [
+					{
+						expand: true,
+						cwd: 'src/images/',
+						src: ['*.{png,jpg,gif}'],
+						dest: 'dist/images/'
 					}
 				]
 			}
@@ -45,9 +59,9 @@ module.exports = function(grunt){
 				files: [
 					{
 						expand: true,
-						cwd: 'resources/js/babel-transpiled/',
+						cwd: 'dist/js/babel-transpiled/',
 						src: ['*.js'],
-						dest: 'resources/js/min/',
+						dest: 'dist/js/min/',
 						ext: '.min.js'
 					}
 				]
@@ -59,32 +73,37 @@ module.exports = function(grunt){
 				separator: ';'
 			},
 			dist: {
-				src: ['resources/js/min/*.js'],
-				dest: 'resources/js/min/concat/<%= pkg.name %>.js'
+				src: ['dist/js/min/*.js'],
+				dest: 'dist/js/min/concat/<%= pkg.name %>.js'
 			}
 		},
 
 		watch: {
-			js: {
-				files: 'resources/js/src/*.js',
-				tasks: ['babel', 'uglify', 'concat']
-			},
 			css: {
-				files: ['resources/sass/*.sass', 'resources/scss/*.scss'],
-				tasks: ['sass']
+				files: ['src/css/*.{sass,scss}'],
+				tasks: ['newer:sass']
+			},
+			js: {
+				files: 'src/js/*.js',
+				tasks: ['newer:babel', 'newer:uglify', 'newer:concat']
+			},
+			images: {
+				files: 'src/images/*.{png,jpg,gif}',
+				tasks: ['imagemin:dynamic']
 			}
 		}
 
 	});
 
-	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-babel');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-newer');
 
-	grunt.registerTask('default', ['sass', 'babel', 'uglify', 'concat']);
-	grunt.registerTask('css', ['sass']);
+	grunt.registerTask('default', ['sass', 'babel', 'uglify', 'concat', 'imagemin']);
 	grunt.registerTask('js', ['babel', 'uglify', 'concat']);
 	
 };
