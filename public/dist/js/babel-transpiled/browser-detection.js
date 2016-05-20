@@ -41,4 +41,3 @@ $UA.isWindows = $UA.OS === 'Windows';
 $UA.isMac = $UA.OS === 'MacOS';
 $UA.isUNIX = $UA.OS === 'UNIX';
 $UA.isLinux = $UA.OS === 'Linux';
-//# sourceMappingURL=browser-detection.js.map
