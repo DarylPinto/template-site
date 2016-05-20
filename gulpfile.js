@@ -1,14 +1,17 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const cache = require('gulp-cached');
+const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
+const mozjpeg = require('imagemin-mozjpeg');
+const pngquant = require('imagemin-pngquant');
 const sass = require('gulp-sass');
 const sourcemap = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 
 //Sass
 gulp.task('sass', () => {
-	gulp.src('public/src/sass/style.sass')
+	gulp.src('public/src/sass/*.sass')
 		.pipe(sourcemap.init())
 			.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(sourcemap.write())
@@ -18,18 +21,24 @@ gulp.task('sass', () => {
 //Javascript
 gulp.task('js', () => {
 	gulp.src('public/src/js/*.js')
+		.pipe(concat('bundle.js'))
+		.pipe(gulp.dest('public/src/js/packed/'))
 		.pipe(sourcemap.init())
 			.pipe(babel())
-			.pipe(gulp.dest('public/dist/js/babel-transpiled'))
 			.pipe(uglify())
 		.pipe(sourcemap.write())
-		.pipe(gulp.dest('public/dist/js/min'))
+		.pipe(gulp.dest('public/dist/js/'))
 });
 
 //Image Optimization
 gulp.task('images', () => {
 	gulp.src('public/src/images/*')
-		.pipe(imagemin())
+		.pipe(imagemin([
+			imagemin.gifsicle(),
+			mozjpeg(),
+			pngquant(),
+			imagemin.svgo()
+		]))
 		.pipe(gulp.dest('public/dist/images'))
 });
 
