@@ -40,4 +40,4 @@ gulp.task('watch', function(){
   gulp.watch('public/src/images/*', ['images']);
 });
 
-gulp.task('default', ['sass', 'js', 'images', 'bundlejs']);
+gulp.task('default', ['sass', 'js', 'images', 'watch']);
