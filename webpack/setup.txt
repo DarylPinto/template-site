@@ -1,0 +1,5 @@
+//These could just be in package.json, but it's better to install like this to get the most up to date versions when beginning a project
+
+npm init
+
+npm install babel-core babel-loader babel-preset-es2015 babel-polyfill babel-preset-stage-0 css-loader node-sass sass-loader style-loader webpack --save-dev
