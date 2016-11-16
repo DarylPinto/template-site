@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 
@@ -39,17 +40,17 @@ module.exports = {
 				test: /.*\.(gif|png|jpe?g|svg)$/i,
 				loaders: [
 					'file?hash=sha512&digest=hex&name=[name].[ext]',
-					'image-webpack?{optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}, mozjpeg: {quality: 65}}'
+					'image-webpack?{optimizationLevel: 7, interlaced: false, pngquant:{quality: "80-90", speed: 4}, mozjpeg: {quality: 95}}'
 				]
 			}
-
 
 		]
 	},
 
 	//plugins
 	plugins: [
-		new ExtractTextPlugin("style.css")
+		new ExtractTextPlugin("style.css"),
+		new OptimizeCssAssetsPlugin()
 	]
 
 };
