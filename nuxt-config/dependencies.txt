@@ -1,0 +1,2 @@
+Dev dependencies:
+	babel-eslint eslint eslint-plugin-vue husky lint-staged prettier

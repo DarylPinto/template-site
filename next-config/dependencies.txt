@@ -1,0 +1,2 @@
+Dev dependencies:
+	babel-eslint eslint eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks husky lint-staged prettier
